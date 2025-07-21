@@ -60,8 +60,9 @@ export const getUrl = async (req: express.Request, res: express.Response) => {
       const geo = await axios.get(`https://ipinfo.io/${ip}?token=${TOKEN}`);
       console.log("Geo data:", geo.data);
       const country = geo.data.country;
-      console.log(country)
-      shortUrl.lastClickedLocation = `${country}`;
+      const city = geo.data.city;
+      console.log(city, country)
+      shortUrl.lastClickedLocation = `${city}, ${country}`;
     } catch (err) {
       shortUrl.lastClickedLocation = "Unknown";
       console.warn("Geo lookup failed:", err);
