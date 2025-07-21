@@ -5,7 +5,6 @@ import connectDb from "./config/dbConfig.js";
 import shortUrl from "./routes/shortUrl.js";
 
 dotenv.config();
-
 connectDb();
 
 const app = express();

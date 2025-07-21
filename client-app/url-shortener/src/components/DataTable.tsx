@@ -5,7 +5,9 @@ type UrlEntry = {
   id: string;
   fullUrl: string;
   shortUrl: string;
-  //clicks removed
+  clicks: number;
+  lastClickedAt: string | null;
+  lastClickedLocation: string;
 };
 
 type DataTableProps = {
@@ -22,13 +24,16 @@ const DataTable: React.FC<DataTableProps> = ({ data, onDelete, onCopy }) => {
           <tr>
             <th>Full URL</th>
             <th>Shortened URL</th>
+            <th>Clicks</th>
+            <th>Last Clicked At</th>
+            <th>Last Click Location</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {data.length === 0 ? (
             <tr>
-              <td colSpan={3} className="empty-row">No data available.</td>
+              <td colSpan={6} className="empty-row">No data available.</td>
             </tr>
           ) : (
             data.map((entry) => (
@@ -44,6 +49,13 @@ const DataTable: React.FC<DataTableProps> = ({ data, onDelete, onCopy }) => {
                     {`http://localhost:5001/api/shortUrl/${entry.shortUrl}`}
                   </a>
                 </td>
+                <td>{entry.clicks}</td>
+                <td>
+                  {entry.lastClickedAt
+                    ? new Date(entry.lastClickedAt).toLocaleString()
+                    : "Never"}
+                </td>
+                <td>{entry.lastClickedLocation}</td> 
                 <td>
                   <button
                     className="action-btn copy-btn"

@@ -15,9 +15,16 @@ const shortUrlSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    lastClickedAt: {
+        type: Date,
+        default: null
+    },
+    lastClickedLocation: {
+        type: String,
+        default: "Unknown",
+    }
 }, {
     timestamps: true
 })
-
 
 export const urlModel = mongoose.model("shortUrl", shortUrlSchema);

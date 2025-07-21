@@ -10,6 +10,9 @@ type UrlEntry = {
   _id: string;
   fullUrl: string;
   shortUrl: string;
+  clicks: number;
+  lastClickedAt: string | null;
+  lastClickedLocation: string;
 };
 
 const App = () => {
@@ -25,7 +28,14 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchUrls();
+    fetchUrls(); // initial fetch
+    const interval = setInterval(() => {
+      if (document.visibilityState === "visible") {
+        fetchUrls();
+      }
+    }, 3000);
+
+    return () => clearInterval(interval); // cleanup 
   }, []);
 
   const handleDelete = async (id: string) => {
@@ -53,6 +63,9 @@ const App = () => {
           id: entry._id,
           fullUrl: entry.fullUrl,
           shortUrl: entry.shortUrl,
+          clicks: entry.clicks ?? 0,
+          lastClickedAt: entry.lastClickedAt ?? null,
+          lastClickedLocation: entry.lastClickedLocation || "Unknown"
         }))}
         onDelete={handleDelete}
         onCopy={handleCopy}

@@ -25,7 +25,7 @@ const FormContainer: React.FC<FormProps> = ({ onSubmitSuccess }) => {
     <div className="form-container">
       <form onSubmit={handleSubmit} className="form">
         <label htmlFor="url" className="form-label">
-          Enter your long URL:
+          let's turn your novel-length URL into a haiku:
         </label>
 
         <div className="input-group">
@@ -41,7 +41,7 @@ const FormContainer: React.FC<FormProps> = ({ onSubmitSuccess }) => {
         </div>
 
         <button type="submit" className="form-button">
-          Shorten URL
+          shrinkURL
         </button>
       </form>
     </div>
