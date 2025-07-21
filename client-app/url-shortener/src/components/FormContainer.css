@@ -1,0 +1,77 @@
+
+.form-container {
+  background: #0e0916;
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  padding: 60px;
+  max-width: 3000px;
+  max-height: 1500px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-label {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #1f1f1f;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #444;
+}
+
+.input-prefix {
+  padding: 0 24px;
+  color: #bbb;
+  font-size: 3rem;
+  white-space: nowrap;
+}
+
+.form-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 20px 24px;
+  color: #fff;
+  font-size: 3rem;
+}
+
+.form-input::placeholder {
+  color: #888;
+  font-size: 3rem;
+}
+
+.form-button {
+  background: #7c3aed;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  font-size: 3rem;
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.25);
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background: #8b5cf6;
+}
+
+.form-button:active {
+  background: #6d28d9;
+}

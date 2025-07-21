@@ -7,25 +7,35 @@ import shortUrl from "./routes/shortUrl.js";
 dotenv.config();
 
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({
     extended:true
-}))
+}));
 
 app.use(cors({
     origin: "http://localhost:3000",
     credentials: true
-}))
+}));
 
 app.use("/api", shortUrl);
 
 const port = process.env.PORT || 5001;
 
+const startServer = async () => {
+  try {
+    await connectDb();  
+    app.listen(port, () => {
+      console.log(`server started on ${port}`);
+    });
+  } catch (error) {
+    console.error("Failed to connect to database", error);
+    process.exit(1);
+  }
+};
+
+startServer();
+
 app.get("/", (req, res) => {
     res.send("Hello!");
-
-})
-
-app.listen(port, () => {
-    console.log(`server started on ${port}`)
-})
+});

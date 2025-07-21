@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  padding: 250px 24px 24px;
+  text-align: center;
+}
+
+.header-title {
+  margin: 0;
+  color: #fff;
+  font-size: 10rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
