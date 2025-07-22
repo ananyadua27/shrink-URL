@@ -17,7 +17,7 @@ app.use(cors());
 
 app.use("/api", shortUrl);
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT ? parseInt(process.env.PORT) : 8080;
 const startServer = async () => {
   try {
     await connectDb();  
