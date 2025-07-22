@@ -50,7 +50,7 @@ const App = () => {
   };
 
   const handleCopy = (shortUrl: string) => {
-    navigator.clipboard.writeText(`http://localhost:5001/api/shortUrl/${shortUrl}`);
+    navigator.clipboard.writeText(`${import.meta.env.VITE_SHORT_LINK_BASE}/${shortUrl}`);
     alert("Short URL copied to clipboard!");
   };
 

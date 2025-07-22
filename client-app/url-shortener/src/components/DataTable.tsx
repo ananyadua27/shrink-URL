@@ -16,6 +16,8 @@ type DataTableProps = {
 };
 
 const DataTable: React.FC<DataTableProps> = ({ data, onDelete, onCopy }) => {
+  const shortLinkBase = import.meta.env.VITE_SHORT_LINK_BASE;
+
   return (
     <div className="table-container">
       <table className="data-table">
@@ -34,41 +36,44 @@ const DataTable: React.FC<DataTableProps> = ({ data, onDelete, onCopy }) => {
               <td colSpan={5} className="empty-row">No data available.</td>
             </tr>
           ) : (
-            data.map((entry) => (
-              <tr key={entry.id}>
-                <td className="truncate">{entry.fullUrl}</td>
-                <td>
-                  <a
-                    href={`http://localhost:5001/api/shortUrl/${entry.shortUrl}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link"
-                  >
-                    {`http://localhost:5001/api/shortUrl/${entry.shortUrl}`}
-                  </a>
-                </td>
-                <td>{entry.clicks}</td>
-                <td>
-                  {entry.lastClickedAt
-                    ? new Date(entry.lastClickedAt).toLocaleString()
-                    : "Never"}
-                </td>
-                <td>
-                  <button
-                    className="action-btn copy-btn"
-                    onClick={() => onCopy(entry.shortUrl)}
-                  >
-                    Copy
-                  </button>
-                  <button
-                    className="action-btn delete-btn"
-                    onClick={() => onDelete(entry.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))
+            data.map((entry) => {
+              const shortUrlFull = `${shortLinkBase}/${entry.shortUrl}`;
+              return (
+                <tr key={entry.id}>
+                  <td className="truncate">{entry.fullUrl}</td>
+                  <td>
+                    <a
+                      href={shortUrlFull}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link"
+                    >
+                      {shortUrlFull}
+                    </a>
+                  </td>
+                  <td>{entry.clicks}</td>
+                  <td>
+                    {entry.lastClickedAt
+                      ? new Date(entry.lastClickedAt).toLocaleString()
+                      : "Never"}
+                  </td>
+                  <td>
+                    <button
+                      className="action-btn copy-btn"
+                      onClick={() => onCopy(entry.shortUrl)}
+                    >
+                      Copy
+                    </button>
+                    <button
+                      className="action-btn delete-btn"
+                      onClick={() => onDelete(entry.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })
           )}
         </tbody>
       </table>
