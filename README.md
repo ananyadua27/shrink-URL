@@ -96,12 +96,6 @@ Base URL: `https://your-railway-deployment-url/api`
 ### `POST /shortUrl`
 Creates a new shortened URL
 
-**Request Body:**
-```json
-{
-  "fullUrl": "https://example.com"
-}
-```
 ### `GET /shortUrl`
 Returns a list of all stored URLs with analytics metadata
 
