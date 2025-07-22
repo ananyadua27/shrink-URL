@@ -12,7 +12,6 @@ type UrlEntry = {
   shortUrl: string;
   clicks: number;
   lastClickedAt: string | null;
-  lastClickedLocation: string;
 };
 
 const App = () => {
@@ -21,6 +20,7 @@ const App = () => {
   const fetchUrls = async () => {
     try {
       const response = await axios.get(`${serverUrl}/shorturl`);
+      console.log("Fetched data:", response.data);
       setUrlData(response.data);
     } catch (error) {
       console.error("Failed to fetch URLs:", error);
@@ -28,14 +28,16 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchUrls(); // initial fetch
+    console.log("useEffect triggered");
+    fetchUrls();
     const interval = setInterval(() => {
       if (document.visibilityState === "visible") {
+        console.log("Refetching visible tab");
         fetchUrls();
       }
     }, 3000);
 
-    return () => clearInterval(interval); // cleanup 
+    return () => clearInterval(interval);
   }, []);
 
   const handleDelete = async (id: string) => {
@@ -65,7 +67,6 @@ const App = () => {
           shortUrl: entry.shortUrl,
           clicks: entry.clicks ?? 0,
           lastClickedAt: entry.lastClickedAt ?? null,
-          lastClickedLocation: entry.lastClickedLocation || "Unknown"
         }))}
         onDelete={handleDelete}
         onCopy={handleCopy}
