@@ -27,4 +27,4 @@ const shortUrlSchema = new mongoose.Schema({
     timestamps: true
 })
 
-export const urlModel = mongoose.model("shortUrl", shortUrlSchema);
+export const urlModel = mongoose.models.shortUrl || mongoose.model("shortUrl", shortUrlSchema);
