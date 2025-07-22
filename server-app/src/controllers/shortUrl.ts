@@ -34,7 +34,9 @@ export const delUrl = async (req: express.Request, res: express.Response) => {
 
 export const getAllUrl = async (req: express.Request, res: express.Response) => {
   try {
+    console.log("About to query shortUrl model...");
     const shortUrls = await urlModel.find();
+    console.log("Found URLs:", shortUrls);
     if (shortUrls.length === 0) {
       return res.status(404).send({ message: "full urls not found!" });
     } else {
