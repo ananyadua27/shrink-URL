@@ -126,8 +126,8 @@ VITE_SERVER_URL=https://your-railway-backend-url/api
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/shrinkURL.git
-cd shrinkURL
+git clone https://github.com/ananyadua27/shrink-URL.git
+cd shrink-URL
 ```
 
 ### 2. Configure Environment Variables
