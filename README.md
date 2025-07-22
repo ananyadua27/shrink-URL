@@ -142,7 +142,7 @@ npm run dev
 
 ### Backend
 
-Deployed via [**Railway**](https://railway.app/)
+Deployed via Railway
 
 - Environment variables managed in Railway dashboard
 - Default port: `8080` (can be configured via `.env`)
