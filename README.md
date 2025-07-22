@@ -36,7 +36,7 @@ Modern web applications often rely on compact URLs for usability, branding, and 
   - Last clicked time
   - Last clicked location (via IP Geolocation API)
 - RESTful API layer with Express + Mongoose
-- Deployed backend (Railway) and frontend (optional Vercel)
+- Deployed backend (Railway) and frontend (Vercel)
 
 ---
 
